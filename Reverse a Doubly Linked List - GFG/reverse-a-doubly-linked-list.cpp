@@ -98,6 +98,7 @@ struct Node
         
 };
 */
+/*
 Node* reverseDLL(Node * head){
     ///1st way is to alter the data values and reverse thee Doubly linked list
     
@@ -116,6 +117,32 @@ Node* reverseDLL(Node * head){
         end = end -> prev;
         i++;
         j--;
+    }
+    
+    return head;
+    
+}
+*/
+
+// Below approach mai hum links ko change karke kar rahe hai isme hum har eak node ke next ko prev se swap kar rahe hai 
+Node* reverseDLL(Node * head){
+    Node * curr = head;
+    
+    if(head == NULL || head->next == NULL){
+        return head;
+    }
+    
+    while(curr -> next != NULL){
+        curr = curr -> next;
+    }
+    
+    head = curr;
+    
+    while(curr != NULL){
+        Node * temp = curr -> next;
+        curr -> next = curr -> prev;
+        curr -> prev = temp;
+        curr = curr -> next;
     }
     
     return head;
