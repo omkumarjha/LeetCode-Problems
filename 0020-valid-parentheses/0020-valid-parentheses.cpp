@@ -16,7 +16,8 @@ public:
                 st.push(element);
             }
             else if(element == ')'){
-                if(st.empty() == false && st.top() == '('){
+                if(st.empty() == false && st.top() == '('){ 
+                    // empty wale ka example ki agar string start hi closing se ho rahi hai it means not valid.
                     st.pop();
                 }
                 else{
@@ -41,10 +42,10 @@ public:
             }
         }
 
-        if(st.empty()){
+        if(st.empty()){  // iska matlab sare brackets correctly open and close hue hai .
             return true;
         }
-        return false;
+        return false;  // example "((" to isme to stack empty thodi hoga.
         
     }
 };
