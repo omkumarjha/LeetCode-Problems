@@ -66,7 +66,7 @@ public:
     }
     */
 
-    // below approach mai space 0(1) constant hai kyuki isme humne flag ke liye koi arrays create nhi kara balki matrix ka 0th row and 0th column ko hi flag ke tarah assume kardiya .
+    // below approach mai space 0(1) constant hai kyuki isme humne flag ke liye koi arrays create nhi kara balki matrix ka 0th row and 0th column ko hi flag ke tarah assume kardiya . to understand it better refer to CODE WITH ALISHA YT 8 min se yeh approach start kara hai .
 
     void setZeroes(vector<vector<int>>& matrix){
         int row = matrix.size();
