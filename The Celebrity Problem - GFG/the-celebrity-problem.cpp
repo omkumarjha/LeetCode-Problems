@@ -48,7 +48,7 @@ class Solution
     */
 
     // Below approach TC 0(n) ka hai and it uses stack 
-    
+    /*
     bool knows(vector<vector<int> >& M, int a, int b, int n) {
         if(M[a][b] == 1)
             return true;
@@ -116,6 +116,50 @@ class Solution
         
         return ans;
     
+    }
+    
+    */
+    
+    // Below approach 2 pointer ko use kar raha hai TC 0(n) and SC 0(1)
+    
+    int celebrity(vector<vector<int> >& M, int n){
+         
+        int i = 0, j = n - 1;
+        
+        while (i < j) {
+            if (M[j][i] == 1) // j knows i so j cannot be the celebrity 
+                j--;
+            else              // j doesnt know i so i cant be celebrity
+                i++;
+        }
+            
+        // i points to our celebrity candidate
+        int candidate = i;
+             
+             
+        int zeroCount = 0;
+        
+        for(int k = 0; k < n; k++) {
+            if(M[candidate][k] == 0)
+                zeroCount++;
+        }
+        
+        //all zeroes
+        if(zeroCount != n)
+            return -1;
+        
+        //column check
+        int oneCount = 0;
+        
+        for(int k = 0; k < n; k++) {
+            if(M[k][candidate] == 1)
+                oneCount++;
+        }
+        
+        if(oneCount != n-1)
+            return -1;
+        
+        return candidate;
     }
         
 };
