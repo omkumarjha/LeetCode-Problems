@@ -77,11 +77,14 @@ class Solution
             if(knows(M,a,b,n)){ // a agar b ko janta hai means a to celebrity hoga nhi 
                 s.push(b);
             }
-            else if(knows(M,b,a,n)){  // aaisa bhi case ho sakta hai jisme a and b koi eak doosre ko naa jaane.but hum still eak element ko push karte chal rahe hai takki last mai stack ke andar eak single element bache and uski madat se hum -1 return kar payenge 
+            else if(knows(M,b,a,n)){  // b agar a ko janta hai means b to celebrity hoga nhi 
                 s.push(a);
-            }
+            } 
+            // woh case jisme a and b dono eak doosre ko jaante ho ya dono eak doosre ko nhi jaante ho usko hum ignore kar rahe hai , ignore karne se finally stack empty ho jayega aur humne bahar empty ka case bhi handle kar liya hai 
         }
-        if(s.size() != 1){
+        
+        // aaisa bhi ho sakta hai ki stack empty ho jaye to handle segmentation failure error we are doing this
+        if(s.size() == 0){
             return -1;
         }
         
