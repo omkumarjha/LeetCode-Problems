@@ -77,9 +77,12 @@ class Solution
             if(knows(M,a,b,n)){ // a agar b ko janta hai means a to celebrity hoga nhi 
                 s.push(b);
             }
-            else{  // aaisa bhi case ho sakta hai jisme a and b koi eak doosre ko naa jaane.
+            else if(knows(M,b,a,n)){  // aaisa bhi case ho sakta hai jisme a and b koi eak doosre ko naa jaane.but hum still eak element ko push karte chal rahe hai takki last mai stack ke andar eak single element bache and uski madat se hum -1 return kar payenge 
                 s.push(a);
             }
+        }
+        if(s.size() != 1){
+            return -1;
         }
         
         int ans = s.top();
