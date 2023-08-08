@@ -11,7 +11,24 @@ using namespace std;
 class Solution
 {
     public:
+    
+    void reverse(queue<int> &q){
+        if(q.empty()){
+            return;
+        }
+        
+        int num = q.front();
+        q.pop();
+        
+        reverse(q);
+        
+        q.push(num);
+    }
+    
     queue<int> rev(queue<int> q){
+        
+        // 1st approach using array otherwise stack se bhi kar sakte hai 
+        /*
         queue<int> ans;
         int n = q.size();
         
@@ -27,6 +44,13 @@ class Solution
         }
         
         return ans;
+        */
+        
+        // 2nd approach using recursion 
+        
+        reverse(q);
+        
+        return q;
     }
 };
 
