@@ -33,6 +33,7 @@ class Solution
 {
     public:
     // Iss question mai wahi hai ki left to right jayenge to hume 0(n^2) type comparisons karne padenge so its better ki hum right to left jaye jisse hum direct curr element ko right side ke max data se compare kar payenge aur conclude kar payenge ki curr node ko answer mai rakhna hai ya nhi 
+    // By code library YT 
     
     Node * reverse(Node * head){
         
