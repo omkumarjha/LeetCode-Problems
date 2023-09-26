@@ -105,12 +105,16 @@ struct Node
 
 class Solution {
 public:
+    // Love babbar 0(n) and SC - 0(h) where h is the heigth of the tree.
+    
+    // left part ke nodes ko print karane ke liye except leaf nodes.
     void traversalForLeft(Node * root,vector<int> & ans){
         if(root == NULL || (root->left == NULL && root->right == NULL)){
             return ;
         }
         else{
             ans.push_back(root->data);
+            // if else isliye lagaya hai ki jaroori nhi hai ki left nodes ka path straight line jaise hi hoga ho sakta hai ki left nodes ke bad left node exist hi na kare only right node ko to woh data loss we don't want isliye agar left jaana possible nhi hai to right chale jao .
             if(root->left){
                 traversalForLeft(root->left,ans);
             }
@@ -120,17 +124,20 @@ public:
         }
     }
     
+    // To print leaf nodes from left to right .
     void traversalForLeaf(Node * root,vector<int> & ans){
         if(root == NULL){
             return ;
         }
         if(root->left == NULL && root->right == NULL){
             ans.push_back(root->data);
+            return ;
         }
         traversalForLeaf(root->left,ans);
         traversalForLeaf(root->right,ans);
     }
     
+    // Right part ke nodes ko print karane ke liye except leaf nodes .
     void traversalForRight(Node * root,vector<int> & ans){
         if(root == NULL || (root->left == NULL && root->right == NULL)){
             return ;
@@ -142,6 +149,7 @@ public:
             else{
                 traversalForRight(root->left,ans);
             }
+            // kyuki right part ke nodes ko hume bottom to top print karna hai isiliye jab calls return ho rahi hogi to hum data ko print kar rahe honge.
             ans.push_back(root->data);
         }
     }
@@ -151,14 +159,17 @@ public:
         
         vector<int> ans;
         
+        // Edge case for 0 node.
         if(root == NULL){
             return ans;
         }
+        
+        // Edge case for 1 node.
         if(root->left == NULL && root -> right == NULL){
             return {root->data};
         }
         
-        ans.push_back(root->data);
+        ans.push_back(root->data); // takki root node ka data 2 baar print na ho isliye usko pehle se hi ans mai push kardiya.
         
         traversalForLeft(root->left,ans);
         traversalForLeaf(root,ans);
