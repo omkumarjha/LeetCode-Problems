@@ -100,8 +100,9 @@ struct Node
 class Solution
 {
     public:
-    //Function to return a list of nodes visible from the top view 
-    //from left to right in Binary Tree.
+    // TC 0(n) SC 0(n) Love babbar 
+    // isme poora concept vertical order traversal ka hi laga hai but jab hum print karwa rahe hai then that time hum bas 1st element of a mapped horizontal distance ko hi consider kr rahe hai .because agar same hd pe multiple nodes hai to jo 1st node hoga wahi apne ko lena hai top view ke hisab se 
+    
     vector<int> topView(Node *root){
         
         map<int,vector<int>> nodes;
