@@ -127,7 +127,9 @@ struct Node
 };
  */
 
-//Function to return a list containing elements of left view of the binary tree.
+//below approach mai hum level order traversal karke left view of a binary tree find kar rahe hai 
+// TC 0(n) SC - 0(n)
+/*
 vector<int> leftView(Node *root){
     
     vector<int> ans;
@@ -164,4 +166,31 @@ vector<int> leftView(Node *root){
     
     return ans;
 
+}
+
+*/
+
+// Below approach is a recursive algorithm jisse hum left view of a binary tree find karenge. Try to make recursive tree to understand it better
+// TC - 0(n) && SC - 0(n)
+
+void solve(Node * root , vector<int> &ans,int level){
+    // Base case
+    if(root == NULL){
+        return ;
+    }
+    else{
+        // agar hum new level pe aa chuke hai it means root -> data ko ans mai dal do . ex initially level 0 pe to ans vector khali hi hoga to uss case mai condition met kar jayegi 
+        if(level == ans.size()){
+            ans.push_back(root->data);
+        }
+        solve(root->left,ans,level+1);
+        solve(root->right,ans,level+1); // agar uper se niche jaoge to offcource level to bhadega hi .
+    }
+}
+
+vector<int> leftView(Node *root){
+    
+    vector<int> ans;
+    solve(root,ans,0);
+    return ans;
 }
