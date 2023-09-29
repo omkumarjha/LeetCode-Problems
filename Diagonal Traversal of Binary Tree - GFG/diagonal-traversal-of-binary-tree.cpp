@@ -123,9 +123,11 @@ struct Node
 
 
 vector<int> diagonal(Node *root){
+    // agar hum iske root node pe khare honge to hum dekh sakte hai ki hume sirf right ka data hi print karna hai but agar hum 1st diagonal ke end mai aa chuke hai to hume 2nd diagonal ke bhi to start pe jaana padega so for that we are checking the left of temp and storing it.
+    // TC 0(n) SC 0(n)
     
     vector<int> ans;
-    if(root == NULL) return ans;
+    if(root == NULL) return ans; // EDGE case
     queue<Node * > q;
     q.push(root);
     
