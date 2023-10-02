@@ -118,34 +118,36 @@ class Solution
 {
 public:
     
-    void solve(Node * root , int & maxi,int sum,int & longestPath , int count){
+    void solve(Node * root , int & maxi,int sum,int & maxLen , int len){
         if(root == NULL){
             return ;
         }
         else{
             sum += root -> data;
-            count++;
+            len++;
             
-            solve(root->left,maxi,sum,longestPath,count);
-            solve(root->right,maxi,sum,longestPath,count);
+            solve(root->left,maxi,sum,maxLen,len);
+            solve(root->right,maxi,sum,maxLen,len);
             
-            if((root->left == NULL && root->right == NULL ) && count > longestPath){
-                longestPath = count;
+            // Below ke if else tabhi chalenge jab we are in leaf node.
+            if((root->left == NULL && root->right == NULL ) && len > maxLen){
+                maxLen = len;
                 maxi = sum;
             }
-            else if((root->left == NULL && root->right == NULL ) && count == longestPath){
+            else if((root->left == NULL && root->right == NULL ) && len == maxLen){
                 maxi = max(sum,maxi);
             }
             
+            // jab calls return ho rahi hogi to nodes ka sum and number of nodes ka count minus karte chalna hai .
             sum -= root->data;
-            count--;
+            len--;
         }
     }
     
     int sumOfLongRootToLeafPath(Node *root){
         
-        int maxi = INT_MIN , sum = 0 , longestPath = INT_MIN , count = 0;
-        solve(root,maxi,sum,longestPath,count);
+        int maxi = INT_MIN , sum = 0 , maxLen = INT_MIN , len = 0;
+        solve(root,maxi,sum,maxLen,len);
         
         return maxi;
     }
