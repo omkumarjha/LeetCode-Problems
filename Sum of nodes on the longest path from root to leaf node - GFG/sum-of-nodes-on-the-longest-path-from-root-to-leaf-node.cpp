@@ -117,6 +117,7 @@ struct Node
 class Solution
 {
 public:
+    // maxi and maxlength ko by reference isliye pass kara hai takki agar kisi eak call stack mai inki value update hoti hai to wahi value kisi doosre call stack mai bhi rahe .
     
     void solve(Node * root , int & maxi,int sum,int & maxLen , int len){
         if(root == NULL){
@@ -139,7 +140,7 @@ public:
             }
             
             // jab calls return ho rahi hogi to nodes ka sum and number of nodes ka count minus karte chalna hai .
-            sum -= root->data;
+            sum -= root->data; // yeh do steps optional hai kyuki har eak call stack mai inki value already differ kar rahi hogi
             len--;
         }
     }
