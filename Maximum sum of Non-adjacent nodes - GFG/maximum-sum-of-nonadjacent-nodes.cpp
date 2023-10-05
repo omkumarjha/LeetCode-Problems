@@ -104,6 +104,9 @@ struct Node
 class Solution{
   public:
     //Function to return the maximum sum of non-adjacent nodes.
+    // TC - 0(n) and SC 0(n) . 
+    // Isme hm uper eak pair bhej rahe hai jiske inclusion part pe root->data and piche ke nodes ke exclusion ki value ko sum up karke bhej rahe hai .
+    // Ans exclusion wale part mai left pair ke first and seecond ka maxi and right pair ke first and second ka maxi and then dono ko sum karke return kardo.
     pair<int,int> solve(Node * root){
         if(root == NULL){
             pair<int,int> p = make_pair(0,0);
