@@ -77,6 +77,8 @@ class Solution
 {
     public:
     
+    // TC - 0(n) and SC - 0(1) . Logic Made By Om .
+    
     Node* reverseList(Node* head) {
         // Edge cases 
         if(head == NULL || head->next == NULL){
@@ -100,7 +102,7 @@ class Solution
     
     void rearrange(struct Node *odd){
         
-        // Edge case
+        // Edge case for single node.
         if(odd->next == NULL){
             return ;
         }
