@@ -33,13 +33,31 @@ class Solution {
   public:
     // Function to return a list containing the inorder traversal of the tree.
     void solve(Node * root , vector<int> & ans){
-        if(root == NULL){
-            return ;
-        }
-        else{
-            solve(root->left,ans);
-            ans.push_back(root->data);
-            solve(root->right,ans);
+        
+        Node * curr = root;
+        
+        while(curr != NULL){
+            if(curr -> left == NULL){
+                ans.push_back(curr->data);
+                curr = curr -> right;
+            }
+            else{
+                Node * pred = curr -> left;
+                
+                while(pred -> right != NULL && pred -> right != curr){
+                    pred = pred -> right;
+                }
+                
+                if(pred -> right == NULL){
+                    pred -> right = curr;
+                    curr = curr -> left;
+                }
+                else{
+                    pred -> right = NULL;
+                    ans.push_back(curr->data);
+                    curr = curr -> right;
+                }
+            }
         }
     }
     vector<int> inOrder(Node* root) {
