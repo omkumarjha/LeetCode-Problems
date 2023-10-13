@@ -125,14 +125,36 @@ struct Node
 
 //Function to return a list containing the postorder traversal of the tree.
     void solve(Node * root , vector<int> & ans){
-        if(root == NULL){
-            return ;
+        // Code for traversing the tree Postorder using Moris Traversal Algorithm 
+        // TC - 0(n) and SC - 0(1)
+        
+        Node * curr = root;
+        
+        while(curr != NULL){
+            if(curr -> right == NULL){
+                ans.push_back(curr->data);
+                curr = curr -> left;
+            }
+            else{
+                Node * pred = curr -> right;
+                
+                while(pred -> left != NULL && pred -> left != curr){
+                    pred = pred -> left;
+                }
+                
+                if(pred -> left == NULL){
+                    pred -> left = curr;
+                    ans.push_back(curr->data);
+                    curr = curr -> right;
+                }
+                else{
+                    pred -> left = NULL;
+                    curr = curr -> left;
+                }
+            }
         }
-        else{
-            solve(root->left,ans);
-            solve(root->right,ans);
-            ans.push_back(root->data);
-        }
+        
+        reverse(ans.begin(),ans.end());
     }
     
 vector <int> postOrder(Node* root){
