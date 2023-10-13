@@ -130,13 +130,33 @@ struct Node
 
 //Function to return a list containing the preorder traversal of the tree.
     void solve(Node * root , vector<int> & ans){
-        if(root == NULL){
-            return ;
-        }
-        else{
-            ans.push_back(root->data);
-            solve(root->left,ans);
-            solve(root->right,ans);
+         // Code for traversing the tree Preorder using Moris Traversal Algorithm 
+        // TC - 0(n) and SC - 0(1)
+        
+        Node * curr = root;
+        
+        while(curr != NULL){
+            if(curr -> left == NULL){
+                ans.push_back(curr->data);
+                curr = curr -> right;
+            }
+            else{
+                Node * pred = curr -> left;
+                
+                while(pred -> right != NULL && pred -> right != curr){
+                    pred = pred -> right;
+                }
+                
+                if(pred -> right == NULL){
+                    pred -> right = curr;
+                    ans.push_back(curr->data);
+                    curr = curr -> left;
+                }
+                else{
+                    pred -> right = NULL;
+                    curr = curr -> right;
+                }
+            }
         }
     }
     
