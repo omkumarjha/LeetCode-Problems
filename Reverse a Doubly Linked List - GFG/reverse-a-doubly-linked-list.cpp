@@ -130,18 +130,39 @@ class Solution
 
     // Below approach mai hum links ko change karke kar rahe hai isme hum har eak node ke next ko prev se swap kar rahe hai 
     Node* reverseDLL(Node * head){
+        
+        // Below approach jab tum curr ko last mai le jaake reverse kar rahe ho .
+        /*
         Node * curr = head;
         
         if(head == NULL || head->next == NULL){
             return head;
         }
         
-        // while(curr -> next != NULL){
-        //     curr = curr -> next;
-        // }
+        while(curr -> next != NULL){
+            curr = curr -> next;
+        }
         
-        // head = curr;
+        head = curr;
     
+        
+        while(curr != NULL){
+            Node * temp = curr -> next;
+            curr -> next = curr -> prev;
+            curr -> prev = temp;
+            curr = curr -> next;
+        }
+        
+        return head;
+        
+        */
+        
+        // Below approach jisme humne curr ko head pe hi rakhkar reversing start kardi .
+        Node * curr = head;
+        
+        if(head == NULL || head->next == NULL){
+            return head;
+        }
         
         while(curr != NULL){
             Node * temp = curr -> next;
@@ -157,8 +178,6 @@ class Solution
         }
         
         head = curr;
-        
-        
         
         return head;
         
