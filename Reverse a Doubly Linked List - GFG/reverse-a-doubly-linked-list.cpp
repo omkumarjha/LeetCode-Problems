@@ -98,56 +98,73 @@ struct Node
         
 };
 */
-/*
-Node* reverseDLL(Node * head){
-    ///1st way is to alter the data values and reverse thee Doubly linked list
-    
-    Node * start = head;
-    Node * end = head;
-    int i = 0 , j = 0;
-    
-    while(end -> next != NULL){
-        end = end -> next;
-        j++;
-    }
-    
-    while(i < j){
-        swap(start->data,end->data);
-        start = start -> next;
-        end = end -> prev;
-        i++;
-        j--;
-    }
-    
-    return head;
-    
-}
-*/
-
-// Below approach mai hum links ko change karke kar rahe hai isme hum har eak node ke next ko prev se swap kar rahe hai 
-Node* reverseDLL(Node * head){
-    Node * curr = head;
-    
-    if(head == NULL || head->next == NULL){
+class Solution
+{
+    public:
+    /*
+    Node* reverseDLL(Node * head){
+        ///1st way is to alter the data values and reverse thee Doubly linked list
+        
+        Node * start = head;
+        Node * end = head;
+        int i = 0 , j = 0;
+        
+        while(end -> next != NULL){
+            end = end -> next;
+            j++;
+        }
+        
+        while(i < j){
+            swap(start->data,end->data);
+            start = start -> next;
+            end = end -> prev;
+            i++;
+            j--;
+        }
+        
         return head;
+        
     }
+    */
+
+
+    // Below approach mai hum links ko change karke kar rahe hai isme hum har eak node ke next ko prev se swap kar rahe hai 
+    Node* reverseDLL(Node * head){
+        Node * curr = head;
+        
+        if(head == NULL || head->next == NULL){
+            return head;
+        }
+        
+        // while(curr -> next != NULL){
+        //     curr = curr -> next;
+        // }
+        
+        // head = curr;
     
-    while(curr -> next != NULL){
-        curr = curr -> next;
+        
+        while(curr != NULL){
+            Node * temp = curr -> next;
+            curr -> next = curr -> prev;
+            curr -> prev = temp;
+            curr = curr -> prev;
+        }
+        
+        curr = head;
+        
+        while(curr -> prev != NULL){
+            curr = curr -> prev;
+        }
+        
+        head = curr;
+        
+        
+        
+        return head;
+        
     }
-    
-    head = curr;
-    
-    while(curr != NULL){
-        Node * temp = curr -> next;
-        curr -> next = curr -> prev;
-        curr -> prev = temp;
-        curr = curr -> next;
-    }
-    
-    return head;
-    
-}
+};
+
 
 
 //{ Driver Code Starts.
@@ -173,7 +190,8 @@ int main() {
 	        temp->prev= tail;
 	        tail = temp;
 	    }
-	    head=reverseDLL(head);
+	    Solution ob;
+	    head=ob.reverseDLL(head);
 	    
 	    
 	    if(verify(head))
