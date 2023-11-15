@@ -132,7 +132,7 @@ class Solution
     Node* reverseDLL(Node * head){
         
         // Below approach jab tum curr ko last mai le jaake reverse kar rahe ho .
-        /*
+        
         Node * curr = head;
         
         if(head == NULL || head->next == NULL){
@@ -155,31 +155,31 @@ class Solution
         
         return head;
         
-        */
+        
         
         // Below approach jisme humne curr ko head pe hi rakhkar reversing start kardi .
-        Node * curr = head;
+        // Node * curr = head;
         
-        if(head == NULL || head->next == NULL){
-            return head;
-        }
+        // if(head == NULL || head->next == NULL){
+        //     return head;
+        // }
         
-        while(curr != NULL){
-            Node * temp = curr -> next;
-            curr -> next = curr -> prev;
-            curr -> prev = temp;
-            curr = curr -> prev;
-        }
+        // while(curr != NULL){
+        //     Node * temp = curr -> next;
+        //     curr -> next = curr -> prev;
+        //     curr -> prev = temp;
+        //     curr = curr -> prev;
+        // }
         
-        curr = head;
+        // curr = head;
         
-        while(curr -> prev != NULL){
-            curr = curr -> prev;
-        }
+        // while(curr -> prev != NULL){
+        //     curr = curr -> prev;
+        // }
         
-        head = curr;
+        // head = curr;
         
-        return head;
+        // return head;
         
     }
 };
