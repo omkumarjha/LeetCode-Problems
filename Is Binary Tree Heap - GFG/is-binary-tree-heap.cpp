@@ -93,6 +93,12 @@ Node *buildTree(string str) {
 class Solution {
   public:
   
+    // To check whether Binary tree is Max heap or not 
+    // 1. check if it is complete binary tree .
+    // 2. if it is satisfying the MAX heap property .
+       
+    // Below has 0(n) TC and 0(n) SC as recursive calls.
+  
     int countNodes(struct Node * root){
         if(root == NULL) return 0;
         else{
@@ -102,7 +108,7 @@ class Solution {
             return (left + right + 1);
         }
     }
-    
+    // for this refer my COPY .
     bool isCBT(struct Node * root,int index,int totalNodes){
         if(root == NULL) return true;
         if(index > totalNodes){
@@ -117,7 +123,11 @@ class Solution {
     }
     
     bool isMaxHeap(struct Node * root){
-
+        // Agar hum yaha pe aaye hai iska matlab Binary tree CBT ko satisfy kar rahi hai . it means below cases ho sakte hai 
+        // 1. when both left and right are null 
+        // 2. when right child is null
+        // 2. when both left and right are non NULL
+        
         if(root -> left == NULL && root->right == NULL) return true;
         
         else if(root -> right == NULL){
@@ -134,12 +144,13 @@ class Solution {
     
     bool isHeap(struct Node* tree) {
        int totalNodes = countNodes(tree);
-       int index = 1;
+       int index = 1; // we are following 1 based indexing
        
+       // Agar Binary tree CBT and max heap property dono ko satify kar raha hai it means woh heap hai .
        if(isCBT(tree,index,totalNodes) && isMaxHeap(tree)){
            return true;
        }
-       return false;
+       return false; // else woh heap nhi hai .
     }
 };
 
